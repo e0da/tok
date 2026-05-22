@@ -16,8 +16,7 @@ module.exports = {
     extensions: ['*', '.js', '.jsx']
   },
   devServer: {
-    contentBase: 'dist',
-    inline: true,
+    static: 'dist',
     hot: true
   }
 }

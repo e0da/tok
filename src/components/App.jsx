@@ -20,15 +20,22 @@ const useStyles = makeStyles(() => ({
 
 const App = () => {
   const classes = useStyles()
-  const timerDisplayValue = '00:00'
   const [timerRunning, setTimerRunning] = useState(false)
-  const [lastStart, setLastStart] = useState()
-  const startInterval = useCallback(() => {})
-  const startBreak = useCallback()
-  const pause = useCallback()
+  const [timerDisplayValue, setTimerDisplayValue] = useState('00:00')
+  const startInterval = useCallback(() => {
+    setTimerDisplayValue('25:00')
+    setTimerRunning(true)
+  }, [])
+  const startBreak = useCallback(() => {
+    setTimerDisplayValue('05:00')
+    setTimerRunning(true)
+  }, [])
+  const pause = useCallback(() => {
+    setTimerRunning(false)
+  }, [])
   return (
     <MuiThemeProvider theme={theme}>
-      <p>{timerDisplayValue}</p>
+      <p>{timerRunning ? timerDisplayValue : `${timerDisplayValue} paused`}</p>
       <Button variant="contained" color="primary" onClick={startInterval}>
         <AccessTimeIcon className={classes.accessTimeIcon} />
         Start Interval
